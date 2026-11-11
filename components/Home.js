@@ -38,7 +38,7 @@ function Home() {
 
   // Movies list
   useEffect(() => {
-    fetch('https://backend-moviz5.vercel.app/')
+    fetch('https://backend-moviz5.vercel.app')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Erreur HTTP : ${response.status}`);
