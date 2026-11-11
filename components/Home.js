@@ -39,18 +39,25 @@ function Home() {
   // Movies list
   useEffect(() => {
     fetch('https://backend-moviz5.vercel.app/movies')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP : ${response.status}`);
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        console.log('Réponse API :', data);
-        setMovies(Array.isArray(data.movies) ? data.movies : []);
-      })
-      .catch((error) => console.error('Erreur fetch :', error));
+        setMoviesData(data);
+      });
   }, []);
+  // useEffect(() => {
+  //   fetch('https://backend-moviz5.vercel.app/movies')
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`Erreur HTTP : ${response.status}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log('Réponse API :', data);
+  //       setMovies(Array.isArray(data.movies) ? data.movies : []);
+  //     })
+  //     .catch((error) => console.error('Erreur fetch :', error));
+  // }, []);
 
   const moviesList = movies.map((data, i) => {
     const isLiked = likedMovies.some((movie) => movie === data.title);
